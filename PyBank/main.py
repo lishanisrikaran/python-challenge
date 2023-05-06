@@ -3,9 +3,7 @@ import os                                                       # Allows us to c
 import csv                                                      # This module allows us to read CSV files.
 
 # Navigates to current working directory and then to the budget_data.csv
-os.chdir("C:/Users/lsrik/Desktop/UoB Data Analytics Boot Camp/Class Work/Module 3 - Python/Module 3 Challenge - PyBank and PyPoll/python-challenge/PyBank")
-csvpath = os.path.join('.', 'Resources', 'budget_data.csv')
-
+csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 
 #Reading the budget_data.csv file:
 with open(csvpath) as csvfile:                                  # Opens the budget_data.csv and stores the contents in the variable 'csvfile'.
@@ -22,7 +20,6 @@ with open(csvpath) as csvfile:                                  # Opens the budg
     PL_List = []                                                # Creates a bare list to store the profit and loss figures in. 
     Profit_Change = []                                          # Creates a bare list to store the monthly profit changes within.
     Previous_Profit = 0                                         # Will be used to help calculate changes between monthly profits. 
-
 
     # For loop begun to read through each row in the budget_data.csv. 
     for row in csvreader:                                       
@@ -53,11 +50,28 @@ with open(csvpath) as csvfile:                                  # Opens the budg
     print("")                                                                      # Creates space before input for easier reading.
     print("Financial Analysis")                                                    # Financial Analysis heading for output.
     print("----------------------------")                                          # Output formatting. 
-    print(f"Total months: {len(Date_List)}")                                       # Total number of months in the budget_data.csv.
+    print(f"Total Months: {len(Date_List)}")                                       # Total number of months in the budget_data.csv.
     print(f"Total: ${sum(PL_List)}")                                               # Net sum of the profit/ losses in the budget_data.csv.
     print(f"Average Change: ${Average}")                                           # Average of the changes in profit/ loss over the entire period.
     print(f"Greatest Increase in Profit: {max_month} (${max(Profit_Change)})")     # The greatest increase in profits (date and amount) over the entire period.
     print(f"Greatest Decrease in Profit: {min_month} (${min(Profit_Change)})")     # The greatest decrease in profits (date and amount) over the entire period.
 
-    
-    
+# Navigates to the analysis text file where the output of the analysis will be stored.
+output_path = os.path.join('..', 'analysis', 'analysis.txt')
+
+# Opens the analysis.txt file in a "write" mode and holds this in the variable 'output_file'.
+with open(output_path, 'w') as output_file:
+
+    # Outputs the financial analysis into the analysis.txt document, creating a new line after each write output. 
+    output_file.write(f"Financial Analysis \n")
+    output_file.write(f"---------------------------- \n")
+    output_file.write(f"Total Months: {len(Date_List)} \n")
+    output_file.write(f"Total: ${sum(PL_List)} \n")
+    output_file.write(f"Average Change: ${Average} \n")
+    output_file.write(f"Greatest Increase in Profit: {max_month} (${max(Profit_Change)}) \n")
+    output_file.write(f"Greatest Decrease in Profit: {min_month} (${min(Profit_Change)}) \n")
+
+    output_file.close()                                                            # Closes the analysis.txt file. 
+
+
+
