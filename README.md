@@ -1,5 +1,5 @@
 # python-challenge
-This repository will contain two Python challenges named: PyBank, and PyPoll. Both scripts will analyse data from their respective csv files: budget_data.csv and election_data.csv to output and export summaries of the findings for the user. 
+This repository contains two Python challenges named: PyBank, and PyPoll. Both scripts will analyse data from their respective csv files: budget_data.csv and election_data.csv to output and export summaries of the findings for the user. 
 
 **PyBank:**
 Analyses the financial records of a fictional company which are stored in a file named budget_data.csv. The budget_data.csv file contains information about monthly profit and loss figures which are logged against their respective dates; The dataset is composed of two columns: "Date" and "Profit/Losses". 
